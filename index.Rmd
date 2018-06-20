@@ -1,0 +1,40 @@
+---
+title:
+author: "cjlortie"
+date: "2018"
+output:
+  html_document:
+    theme: flatly
+    toc: no
+    toc_depth: 3
+    toc_float: no
+  pdf_document:
+    toc: no
+---
+##A test of camera trapping for behavioral and movement ecology
+<br>
+
+###Purpose
+To explore the capacity for camera trapping techology to estimate and capture movement and behavior for vertebrate desert animals. Tested in Carrizo National Monument, California 2018.
+
+
+<br>
+![](./CNM.jpg)
+
+
+###Data
+```{r, data, warning=FALSE, message=FALSE}
+library(tidyverse)
+vids <- read_csv("data/2018_MNP_camtrap_videos.csv")
+#summary(vids)
+library(skimr)
+skim(vids)
+
+```
+
+###Viz
+```{r, viz, warning=FALSE, message=FALSE}
+ggplot(vids, aes(as.character(week), behavior)) +
+  geom_boxplot()
+
+```
