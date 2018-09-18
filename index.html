@@ -174,7 +174,7 @@ vids</code></pre>
 ## #   microsite &lt;chr&gt;, video &lt;int&gt;, animal.hit &lt;int&gt;, RTU &lt;chr&gt;,
 ## #   time.block &lt;chr&gt;, actual.time &lt;time&gt;, start &lt;time&gt;, stop &lt;time&gt;,
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;</code></pre>
-<pre class="r"><code>vid.data &lt;- left_join(vids, meta.data, by = &quot;rep&quot;) #or do we want a full join?
+<pre class="r"><code>vid.data &lt;- left_join(vids, meta.data, by = &quot;rep&quot;)
 vid.data</code></pre>
 <pre><code>## # A tibble: 49,884 x 32
 ##     year recorder file.name total.duration.… region site  date.x week.x
@@ -195,7 +195,11 @@ vid.data</code></pre>
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;, week.y &lt;int&gt;, date.y &lt;chr&gt;,
 ## #   mode &lt;chr&gt;, mesohabitat &lt;chr&gt;, setuptime &lt;time&gt;, lat &lt;dbl&gt;,
 ## #   long &lt;dbl&gt;, burrows &lt;int&gt;, x &lt;int&gt;, y &lt;int&gt;, z &lt;int&gt;, notes &lt;chr&gt;</code></pre>
-<pre class="r"><code>#write_csv(vid.data, &quot;data/test.csv&quot;)</code></pre>
+<pre class="r"><code>#write_csv(vid.data, &quot;data/test.csv&quot;)
+
+#vid.data.2 &lt;- inner_join(vids, meta.data, by = &quot;rep&quot;) #or do we want a full join?
+#vid.data.2
+#write_csv(vid.data.2, &quot;data/test.2.csv&quot;)</code></pre>
 </div>
 <div id="viz" class="section level3">
 <h3>Viz</h3>
