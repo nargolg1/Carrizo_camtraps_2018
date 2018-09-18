@@ -36,9 +36,7 @@ vid.data <- left_join(vids, meta.data, by = "rep")
 vid.data
 #write_csv(vid.data, "data/test.csv")
 
-#vid.data.2 <- inner_join(vids, meta.data, by = "rep") #or do we want a full join?
-#vid.data.2
-#write_csv(vid.data.2, "data/test.2.csv")
+
 
 
 ```

@@ -143,21 +143,21 @@ meta.data</code></pre>
 <pre><code>## # A tibble: 160 x 13
 ##    rep    week date  mode  mesohabitat setuptime   lat  long burrows     x
 ##    &lt;chr&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;time&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt; &lt;int&gt;
-##  1 PS1       1 10-M… photo shrub       09:10      35.1 -120.       1   407
-##  2 PS2       1 10-M… photo shrub       09:17      35.1 -120.       1   507
-##  3 PS3       1 10-M… photo shrub       09:25      35.1 -120.       1   567
-##  4 PS4       1 10-M… photo shrub       09:30      35.1 -120.       1   337
-##  5 PS5       1 10-M… photo shrub       09:36      35.1 -120.       1   334
-##  6 PS6       1 10-M… photo shrub       09:40      35.1 -120.       1   366
-##  7 PS7       1 10-M… photo shrub       09:48      35.1 -120.       1   561
-##  8 PS8       1 10-M… photo shrub       09:52      35.1 -120.       1   362
-##  9 PO1       1 10-M… video open        09:10      35.1 -120.       1   407
-## 10 PO2       1 10-M… video open        09:17      35.1 -120.       1   507
+##  1 PS101     1 10-M… photo shrub       09:10      35.1 -120.       1   407
+##  2 PS201     1 10-M… photo shrub       09:17      35.1 -120.       1   507
+##  3 PS301     1 10-M… photo shrub       09:25      35.1 -120.       1   567
+##  4 PS401     1 10-M… photo shrub       09:30      35.1 -120.       1   337
+##  5 PS501     1 10-M… photo shrub       09:36      35.1 -120.       1   334
+##  6 PS601     1 10-M… photo shrub       09:40      35.1 -120.       1   366
+##  7 PS701     1 10-M… photo shrub       09:48      35.1 -120.       1   561
+##  8 PS801     1 10-M… photo shrub       09:52      35.1 -120.       1   362
+##  9 PO101     1 10-M… video open        09:10      35.1 -120.       1   407
+## 10 PO201     1 10-M… video open        09:17      35.1 -120.       1   507
 ## # ... with 150 more rows, and 3 more variables: y &lt;int&gt;, z &lt;int&gt;,
 ## #   notes &lt;chr&gt;</code></pre>
 <pre class="r"><code>vids &lt;- read_csv(&quot;data/2018_carrizo_camtrap_videos_2.csv&quot;)
 vids</code></pre>
-<pre><code>## # A tibble: 8,314 x 20
+<pre><code>## # A tibble: 8,713 x 20
 ##     year recorder file.name total.duration.… region site  date   week   day
 ##    &lt;int&gt; &lt;chr&gt;        &lt;int&gt; &lt;time&gt;           &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
 ##  1  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-M…     1     1
@@ -170,36 +170,32 @@ vids</code></pre>
 ##  8  2018 mario     10010008 05'00&quot;           CNM    Carr… 11-M…     1     1
 ##  9  2018 mario     10010009 05'00&quot;           CNM    Carr… 11-M…     1     1
 ## 10  2018 mario     10010010 05'00&quot;           CNM    Carr… 11-M…     1     1
-## # ... with 8,304 more rows, and 11 more variables: rep &lt;chr&gt;,
+## # ... with 8,703 more rows, and 11 more variables: rep &lt;chr&gt;,
 ## #   microsite &lt;chr&gt;, video &lt;int&gt;, animal.hit &lt;int&gt;, RTU &lt;chr&gt;,
 ## #   time.block &lt;chr&gt;, actual.time &lt;time&gt;, start &lt;time&gt;, stop &lt;time&gt;,
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;</code></pre>
 <pre class="r"><code>vid.data &lt;- left_join(vids, meta.data, by = &quot;rep&quot;)
 vid.data</code></pre>
-<pre><code>## # A tibble: 49,884 x 32
+<pre><code>## # A tibble: 8,713 x 32
 ##     year recorder file.name total.duration.… region site  date.x week.x
 ##    &lt;int&gt; &lt;chr&gt;        &lt;int&gt; &lt;time&gt;           &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;int&gt;
 ##  1  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  2  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  3  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  4  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  5  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  6  2018 mario     10010001 05'00&quot;           CNM    Carr… 11-May      1
-##  7  2018 mario     10010002 05'00&quot;           CNM    Carr… 11-May      1
-##  8  2018 mario     10010002 05'00&quot;           CNM    Carr… 11-May      1
-##  9  2018 mario     10010002 05'00&quot;           CNM    Carr… 11-May      1
-## 10  2018 mario     10010002 05'00&quot;           CNM    Carr… 11-May      1
-## # ... with 49,874 more rows, and 24 more variables: day &lt;int&gt;, rep &lt;chr&gt;,
+##  2  2018 mario     10010002 05'00&quot;           CNM    Carr… 11-May      1
+##  3  2018 mario     10010003 05'00&quot;           CNM    Carr… 11-May      1
+##  4  2018 mario     10010004 05'00&quot;           CNM    Carr… 11-May      1
+##  5  2018 mario     10010005 05'00&quot;           CNM    Carr… 11-May      1
+##  6  2018 mario     10010006 05'00&quot;           CNM    Carr… 11-May      1
+##  7  2018 mario     10010007 05'00&quot;           CNM    Carr… 11-May      1
+##  8  2018 mario     10010008 05'00&quot;           CNM    Carr… 11-May      1
+##  9  2018 mario     10010009 05'00&quot;           CNM    Carr… 11-May      1
+## 10  2018 mario     10010010 05'00&quot;           CNM    Carr… 11-May      1
+## # ... with 8,703 more rows, and 24 more variables: day &lt;int&gt;, rep &lt;chr&gt;,
 ## #   microsite &lt;chr&gt;, video &lt;int&gt;, animal.hit &lt;int&gt;, RTU &lt;chr&gt;,
 ## #   time.block &lt;chr&gt;, actual.time &lt;time&gt;, start &lt;time&gt;, stop &lt;time&gt;,
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;, week.y &lt;int&gt;, date.y &lt;chr&gt;,
 ## #   mode &lt;chr&gt;, mesohabitat &lt;chr&gt;, setuptime &lt;time&gt;, lat &lt;dbl&gt;,
 ## #   long &lt;dbl&gt;, burrows &lt;int&gt;, x &lt;int&gt;, y &lt;int&gt;, z &lt;int&gt;, notes &lt;chr&gt;</code></pre>
-<pre class="r"><code>#write_csv(vid.data, &quot;data/test.csv&quot;)
-
-#vid.data.2 &lt;- inner_join(vids, meta.data, by = &quot;rep&quot;) #or do we want a full join?
-#vid.data.2
-#write_csv(vid.data.2, &quot;data/test.2.csv&quot;)</code></pre>
+<pre class="r"><code>#write_csv(vid.data, &quot;data/test.csv&quot;)</code></pre>
 </div>
 <div id="viz" class="section level3">
 <h3>Viz</h3>
