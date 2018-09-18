@@ -195,7 +195,126 @@ vid.data</code></pre>
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;, week.y &lt;int&gt;, date.y &lt;chr&gt;,
 ## #   mode &lt;chr&gt;, mesohabitat &lt;chr&gt;, setuptime &lt;time&gt;, lat &lt;dbl&gt;,
 ## #   long &lt;dbl&gt;, burrows &lt;int&gt;, x &lt;int&gt;, y &lt;int&gt;, z &lt;int&gt;, notes &lt;chr&gt;</code></pre>
-<pre class="r"><code>#write_csv(vid.data, &quot;data/test.csv&quot;)</code></pre>
+<pre class="r"><code>#write_csv(vid.data, &quot;data/test1.csv&quot;)
+
+#stills
+meta.data &lt;- read_csv(&quot;data/2018_carrizo_camtrap_stills_metadata.csv&quot;)
+meta.data</code></pre>
+<pre><code>## # A tibble: 54 x 14
+##    rep   cam.rep lat    long     X     y     z  time burrow `SD ID`  week
+##    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;chr&gt;   &lt;int&gt;
+##  1 PAS1        1 35.1… -120.   425   381   170  1000      3 PS1         1
+##  2 PAO1        1 35.1… -120.   425   381   170  1000      3 SD4         1
+##  3 PAS2        2 35.1… -120.   310   256   154  1011      5 20          1
+##  4 PAO2        2 35.1… -120.   310   256   154  1011      5 PO2         1
+##  5 PAS3        3 35.1… -120.   244   222   106  1020      0 PO5         1
+##  6 PAO3        3 35.1… -120.   244   222   106  1020      0 PS4         1
+##  7 PAS4        4 35.1… -120.   286   198    86  1031      0 27T4        1
+##  8 PAO4        4 35.1… -120.   286   198    86  1031      0 13          1
+##  9 PAS5        5 35.1… -120.   430   243   153  1036      2 PS8         1
+## 10 PAO5        5 35.1… -120.   430   243   153  1036      2 T43         1
+## # ... with 44 more rows, and 3 more variables: `week letter` &lt;chr&gt;,
+## #   shrub.open &lt;chr&gt;, mode.photo.video &lt;chr&gt;</code></pre>
+<pre class="r"><code>stills &lt;- read_csv(&quot;data/2018_carrizo_camtrap_stills.csv&quot;)
+stills</code></pre>
+<pre><code>## # A tibble: 14,007 x 21
+##    rep    year region  site date  microsite `week letter`  week   day
+##    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt; &lt;int&gt;
+##  1 PAO1   2018 CNM        4 1/17… open      A                 1     1
+##  2 PAO1   2018 CNM        4 1/17… open      A                 1     1
+##  3 PAO1   2018 CNM        4 1/17… open      A                 1     1
+##  4 PAO1   2018 CNM        4 1/17… open      A                 1     1
+##  5 PAO1   2018 CNM        4 1/18… open      A                 1     2
+##  6 PAO1   2018 CNM        4 1/19… open      A                 1     3
+##  7 PAO1   2018 CNM        4 1/20… open      A                 1     4
+##  8 PAO1   2018 CNM        4 1/20… open      A                 1     4
+##  9 PAO1   2018 CNM        4 1/20… open      A                 1     4
+## 10 PAO1   2018 CNM        4 1/20… open      A                 1     4
+## # ... with 13,997 more rows, and 12 more variables: cam.rep &lt;int&gt;,
+## #   photo.rep &lt;int&gt;, animal &lt;chr&gt;, animal.capture &lt;int&gt;,
+## #   latin.binomial &lt;chr&gt;, timeblock &lt;chr&gt;, night.day &lt;chr&gt;,
+## #   actual.time &lt;chr&gt;, observations &lt;chr&gt;, temp &lt;chr&gt;, `shrub/open` &lt;chr&gt;,
+## #   mode.photo.video &lt;chr&gt;</code></pre>
+<pre class="r"><code>stills.data &lt;- left_join(stills, meta.data, by = &quot;rep&quot;)
+stills.data</code></pre>
+<pre><code>## # A tibble: 14,007 x 34
+##    rep    year region  site date  microsite `week letter.x` week.x   day
+##    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;int&gt; &lt;int&gt;
+##  1 PAO1   2018 CNM        4 1/17… open      A                    1     1
+##  2 PAO1   2018 CNM        4 1/17… open      A                    1     1
+##  3 PAO1   2018 CNM        4 1/17… open      A                    1     1
+##  4 PAO1   2018 CNM        4 1/17… open      A                    1     1
+##  5 PAO1   2018 CNM        4 1/18… open      A                    1     2
+##  6 PAO1   2018 CNM        4 1/19… open      A                    1     3
+##  7 PAO1   2018 CNM        4 1/20… open      A                    1     4
+##  8 PAO1   2018 CNM        4 1/20… open      A                    1     4
+##  9 PAO1   2018 CNM        4 1/20… open      A                    1     4
+## 10 PAO1   2018 CNM        4 1/20… open      A                    1     4
+## # ... with 13,997 more rows, and 25 more variables: cam.rep.x &lt;int&gt;,
+## #   photo.rep &lt;int&gt;, animal &lt;chr&gt;, animal.capture &lt;int&gt;,
+## #   latin.binomial &lt;chr&gt;, timeblock &lt;chr&gt;, night.day &lt;chr&gt;,
+## #   actual.time &lt;chr&gt;, observations &lt;chr&gt;, temp &lt;chr&gt;, `shrub/open` &lt;chr&gt;,
+## #   mode.photo.video.x &lt;chr&gt;, cam.rep.y &lt;int&gt;, lat &lt;chr&gt;, long &lt;dbl&gt;,
+## #   X &lt;int&gt;, y &lt;int&gt;, z &lt;int&gt;, time &lt;int&gt;, burrow &lt;int&gt;, `SD ID` &lt;chr&gt;,
+## #   week.y &lt;int&gt;, `week letter.y` &lt;chr&gt;, shrub.open &lt;chr&gt;,
+## #   mode.photo.video.y &lt;chr&gt;</code></pre>
+<pre class="r"><code>#write_csv(stills.data, &quot;data/test2.csv&quot;)
+
+#sodalake
+meta.data &lt;- read_csv(&quot;data/2018_sodalake_camtrap_metadata.csv&quot;)
+meta.data</code></pre>
+<pre><code>## # A tibble: 30 x 6
+##     year region site             rep   lat  long
+##    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  2018 CNM    Swain Site Cam     1  35.1 -120.
+##  2  2018 CNM    Swain Site Cam     2  35.1 -120.
+##  3  2018 CNM    Swain Site Cam     3  35.1 -120.
+##  4  2018 CNM    Swain Site Cam     4  35.1 -120.
+##  5  2018 CNM    Swain Site Cam     5  35.1 -120.
+##  6  2018 CNM    Swain Site Cam     6  35.1 -120.
+##  7  2018 CNM    Swain Site Cam     7  35.1 -120.
+##  8  2018 CNM    Swain Site Cam     8  35.1 -120.
+##  9  2018 CNM    Swain Site Cam     9  35.1 -120.
+## 10  2018 CNM    Swain Site Cam    10  35.1 -120.
+## # ... with 20 more rows</code></pre>
+<pre class="r"><code>sodalake &lt;- read_csv(&quot;data/2018_sodalake_camtraps.csv&quot;)
+sodalake</code></pre>
+<pre><code>## # A tibble: 20,667 x 15
+##     year region site  date  microsite   day   rep photo.rep animal.capture
+##    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt;     &lt;int&gt;          &lt;int&gt;
+##  1  2018 CNM    Carr… 6/17… open          1     1         1              0
+##  2  2018 CNM    Carr… 6/19… open          2     1         2              0
+##  3  2018 CNM    Carr… 6/19… open          2     1         3              0
+##  4  2018 CNM    Carr… 6/20… open          3     1         4              0
+##  5  2018 CNM    Carr… 6/20… open          3     1         5              0
+##  6  2018 CNM    Carr… 6/20… open          3     1         6              1
+##  7  2018 CNM    Carr… 6/20… open          3     1         7              1
+##  8  2018 CNM    Carr… 6/20… open          3     1         8              1
+##  9  2018 CNM    Carr… 6/20… open          3     1         9              1
+## 10  2018 CNM    Carr… 6/20… open          3     1        10              1
+## # ... with 20,657 more rows, and 6 more variables: animal &lt;chr&gt;,
+## #   latin.bionomial &lt;chr&gt;, timeblock &lt;chr&gt;, night.day &lt;chr&gt;,
+## #   actual.time &lt;time&gt;, observations &lt;chr&gt;</code></pre>
+<pre class="r"><code>sodalake.data &lt;- left_join(sodalake, meta.data, by = &quot;rep&quot;)
+sodalake.data</code></pre>
+<pre><code>## # A tibble: 20,667 x 20
+##    year.x region.x site.x date  microsite   day   rep photo.rep
+##     &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;int&gt; &lt;int&gt;     &lt;int&gt;
+##  1   2018 CNM      Carri… 6/17… open          1     1         1
+##  2   2018 CNM      Carri… 6/19… open          2     1         2
+##  3   2018 CNM      Carri… 6/19… open          2     1         3
+##  4   2018 CNM      Carri… 6/20… open          3     1         4
+##  5   2018 CNM      Carri… 6/20… open          3     1         5
+##  6   2018 CNM      Carri… 6/20… open          3     1         6
+##  7   2018 CNM      Carri… 6/20… open          3     1         7
+##  8   2018 CNM      Carri… 6/20… open          3     1         8
+##  9   2018 CNM      Carri… 6/20… open          3     1         9
+## 10   2018 CNM      Carri… 6/20… open          3     1        10
+## # ... with 20,657 more rows, and 12 more variables: animal.capture &lt;int&gt;,
+## #   animal &lt;chr&gt;, latin.bionomial &lt;chr&gt;, timeblock &lt;chr&gt;, night.day &lt;chr&gt;,
+## #   actual.time &lt;time&gt;, observations &lt;chr&gt;, year.y &lt;int&gt;, region.y &lt;chr&gt;,
+## #   site.y &lt;chr&gt;, lat &lt;dbl&gt;, long &lt;dbl&gt;</code></pre>
+<pre class="r"><code>#write_csv(sodalake.data, &quot;data/test3.csv&quot;)</code></pre>
 </div>
 <div id="viz" class="section level3">
 <h3>Viz</h3>
