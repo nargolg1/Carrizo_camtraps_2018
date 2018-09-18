@@ -32,7 +32,7 @@ meta.data
 vids <- read_csv("data/2018_carrizo_camtrap_videos_2.csv")
 vids
 
-vid.data <- left_join(vids, meta.data, by = "rep")
+vid.data <- left_join(vids, meta.data, by = "rep") #or do we want a full join?
 vid.data
 #write_csv(vid.data, "data/test.csv")
 

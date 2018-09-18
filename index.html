@@ -174,7 +174,7 @@ vids</code></pre>
 ## #   microsite &lt;chr&gt;, video &lt;int&gt;, animal.hit &lt;int&gt;, RTU &lt;chr&gt;,
 ## #   time.block &lt;chr&gt;, actual.time &lt;time&gt;, start &lt;time&gt;, stop &lt;time&gt;,
 ## #   behavior &lt;chr&gt;, observation &lt;chr&gt;</code></pre>
-<pre class="r"><code>vid.data &lt;- left_join(vids, meta.data, by = &quot;rep&quot;)
+<pre class="r"><code>vid.data &lt;- left_join(vids, meta.data, by = &quot;rep&quot;) #or do we want a full join?
 vid.data</code></pre>
 <pre><code>## # A tibble: 49,884 x 32
 ##     year recorder file.name total.duration.… region site  date.x week.x
