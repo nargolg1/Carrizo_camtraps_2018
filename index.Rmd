@@ -25,16 +25,21 @@ To explore the capacity for camera trapping techology to estimate and capture mo
 ###Data
 ```{r, data, warning=FALSE, message=FALSE}
 library(tidyverse)
-vids <- read_csv("data/2018_MNP_camtrap_videos.csv")
-#summary(vids)
-library(skimr)
-skim(vids)
+#videos
+meta.data <- read_csv("data/2018_carrizo_camtrap_metadata.csv")
+meta.data
+
+vids <- read_csv("data/2018_carrizo_camtrap_videos_2.csv")
+vids
+
+vid.data <- left_join(vids, meta.data, by = "rep")
+vid.data
+#write_csv(vid.data, "data/test.csv")
 
 ```
 
 ###Viz
 ```{r, viz, warning=FALSE, message=FALSE}
-ggplot(vids, aes(as.character(week), behavior)) +
-  geom_boxplot()
+
 
 ```
